@@ -12,6 +12,11 @@ metadata:
     app: {{ template "kapacitor.fullname" . }}
 spec:
   replicas: 1
+  strategy:
+    type: {{ .Values.updateStrategy.type }}
+    {{- if eq .Values.updateStrategy.type "Recreate" }}
+    rollingUpdate: null
+    {{- end }}
   selector:
     matchLabels:
       app: {{ template "kapacitor.fullname" . }}

@@ -6,6 +6,10 @@ image:
   tag: "1.5.9-alpine"
   pullPolicy: "IfNotPresent"
 
+## The deployment update strategy to use, defaulting to Recreate to solve for pvc mounting issues
+updateStrategy:
+  type: Recreate
+
 ## Specify a service type, defaults to NodePort
 ## ref: http://kubernetes.io/docs/user-guide/services/
 ##
